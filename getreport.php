@@ -1,4 +1,8 @@
 <?php
+//  Author: Lio MJ 
+//  URL: (https://github.com/liomj/)
+//  Description: Simple PHP/MS Access/ODBC Attendance Report For FingerTec TA500 Device (FingerTec TCMS v3)
+
 include "config.php";
 ?>
 <script>
