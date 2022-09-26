@@ -2,6 +2,6 @@
 
 Instruction
 
-a. Setup Your MSAccess Database ODBC Data Source Connection (ingress.mdb)
+a. Setup your ODBC Data Source Connection For MSAccess Database (ingress.mdb)
 
-b. Setup simple config in php file
+b. Setup config in config.php file

@@ -1,34 +1,68 @@
 <?php
-//  Author: Lio MJ 
-//  URL: (https://github.com/liomj/)
-//  Description: Simple PHP/MS Access/ODBC Attendance Report For FingerTec TA500 Device (FingerTec TCMS v3)
+include "config.php";
+?>
+<script>
+window.history.forward(1);
+</script>
+<?php
+$selectedmonth = intval($_POST['selectedmonth']);
+$selectedyear = intval($_POST['selectedyear']);
+$selecteduser = $_POST['selecteduser'];
 
+$nextmonth1=Date("m", strtotime("" . $selectedyear . "-" . $selectedmonth . "-01" . " +1 month"));
+if ($nextmonth1=='01')
+	{
+	$nextmonth=12;
+	}
+else
+	{
+	$nextmonth=Date("m", strtotime("" . $selectedyear . "-" . $selectedmonth . "-01" . " +1 month"));
+	}
+  
+$month = "$selectedmonth";
+$year = "$selectedyear";
+$monthNum = $month;
+$monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
 
-echo "<html><head>";
-echo "<title>Staff Attendance Report</title>";
-echo "<meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>";
-echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' 
-crossorigin='anonymous'>";
+$currentdate=date("Y-m-d");
 
-echo "</head><body>";
+if ($selectedmonth=='1')
+{$mymonth='01';}
+else if ($selectedmonth=='2')
+{$mymonth='02';}
+else if ($selectedmonth=='3')
+{$mymonth='03';}
+else if ($selectedmonth=='4')
+{$mymonth='04';}
+else if ($selectedmonth=='5')
+{$mymonth='05';}
+else if ($selectedmonth=='6')
+{$mymonth='06';}
+else if ($selectedmonth=='7')
+{$mymonth='07';}
+else if ($selectedmonth=='8')
+{$mymonth='08';}
+else if ($selectedmonth=='9')
+{$mymonth='09';}
+else if ($selectedmonth=='10')
+{$mymonth='10';}
+else if ($selectedmonth=='11')
+{$mymonth='11';}
+else if($selectedmonth=='12')
+{$mymonth='12';}
+else{}	
 
-//Configuration
-$selectedmonth = '06';
-$selectedyear = '2022';
-$selecteduser = ''; // Staff IC Number 
-$systemdsn =''; // System DSN - Data Source Name
-$accessdbpassword='ingress'; // MS Access ingress.mdb Database Password
-//End Configuration
+$selecteddate= "$selectedyear-$mymonth-01";
 
+if ($selecteddate > $currentdate)
+{
+echo "There is no data yet for the selected month";
+}
+else{  
+	
 $monthName = date("F", mktime(0, 0, 0, $selectedmonth, 10));
 echo "<div class='container'>";
-echo "<span style='text-transform:uppercase'><b>Staff Attendance Report (FingerTec TA500 Device - FingerTec TCMS v3)</b></span>";
-echo "<br /><b>Month:</b> $monthName $selectedyear</center><br />";
-
-//ODBC Connection
-$conn=odbc_connect($systemdsn,'',$accessdbpassword);
-if (!$conn)
-  {exit("Connection Failed: " . $conn);}
+echo "<span style='text-transform:uppercase'><b>Staff Attendance Report</b></span><br>";
 
 // User Info Query
 $userquery="SELECT user.userid,user.Name,user.User_Group,user.ic,user_group.id,user_group.gName,user_group.parentId FROM user AS user INNER JOIN user_group AS user_group ON user.User_Group=user_group.id WHERE user.ic='$selecteduser'";
@@ -46,9 +80,10 @@ while (odbc_fetch_row($rs))
   $deptname=odbc_result($rs,"gName");
 
 
-echo "<b>Name:</b> $name &nbsp;&nbsp;<b>IC Number:</b> $icnumber &nbsp;&nbsp;<b>Department:</b> $deptname <br><br>";
+echo "<b>Name:</b> $name &nbsp;&nbsp;<b>IC Number:</b> $icnumber &nbsp;&nbsp;<b>Department:</b> $deptname ";
 
 }
+echo "<br /><b>Month:</b> $monthName $selectedyear</center><br />";
 echo "</div>";
 
 $month = "$selectedmonth";
@@ -101,9 +136,7 @@ echo "</tr>";
 
 echo "</tbody></table>";
 
-echo "</div>";
-echo "</body></html>"; 
+} 
+
 
 ?>
-
-
