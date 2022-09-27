@@ -71,12 +71,43 @@ echo "<div class='p-5'>";
 echo "<br><span style='text-transform:uppercase'><b>Staff Directory</b></span><br><br>";
 ?>
 
+<p>
+<div class="form-group">
+  <label for="department">Select Department:</label>
+<select id="table-filter">
+<option value="">Show All</option>
+
+
+   <?php
+           
+$getdept="SELECT 
+  user_group.id,
+  user_group.gName,
+  user_group.parentId 
+  FROM user_group";
+  
+  $deptrs = odbc_exec($conn, $getdept);
+if (!$deptrs) {
+    exit("Error in SQL Display");
+}
+	
+while(odbc_fetch_row($deptrs)){
+  $deptid=odbc_result($deptrs,"User_Group");
+  $deptname=odbc_result($deptrs,"gName");
+echo "<option value='$deptname'>--&nbsp;&nbsp;$deptname</option>";
+}
+?>
+</select>
+</div>
+</p>
+
 <table id="userlist" class="table table-striped table-bordered" cellspacing="0">
 
     <thead>
         <tr>
 			<th>Name</th>
 			<th>Department</th>
+			<th>Designation</th>
 			<th>IC No</th>
 			<th>User ID</th>
         </tr>
@@ -85,6 +116,7 @@ echo "<br><span style='text-transform:uppercase'><b>Staff Directory</b></span><b
         <tr>
 			<th>Name</th>
 			<th>Department</th>
+			<th>Designation</th>
 			<th>IC No</th>
 			<th>User ID</th>
         </tr>
@@ -96,7 +128,9 @@ $accessQuery="SELECT
   user.userid,
   user.Name,
   user.User_Group,
-  user.ic,user_group.id,
+  user.ic,
+  user.designation,
+  user_group.id,
   user_group.gName,
   user_group.parentId 
   FROM user AS user 
@@ -113,10 +147,12 @@ while(odbc_fetch_row($rs)){
   $name=odbc_result($rs,"Name");
   $userdeptid=odbc_result($rs,"User_Group");
   $icnumber=odbc_result($rs,"ic");
+  $designation=odbc_result($rs,"designation");
   $deptname=odbc_result($rs,"gName");
         echo "<tr>";
 		echo "<td>$name </td>";	
-	    echo "<td><b>$deptname </b></td>";
+	    echo "<td><b>$deptname</b></td>";
+		echo "<td>$designation</td>";
 		echo "<td>$icnumber</td>";
 		echo "<td>$userid</td>";
         echo "</tr>";
