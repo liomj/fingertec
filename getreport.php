@@ -84,7 +84,7 @@ echo "<b>Name:</b> $name &nbsp;&nbsp;<b>IC Number:</b> $icnumber &nbsp;&nbsp;<b>
 
 }
 echo "<br /><b>Month:</b> $monthName $selectedyear</center><br />";
-echo "</div>";
+
 
 $month = "$selectedmonth";
 $year = "$selectedyear";
@@ -92,7 +92,7 @@ $start_date = "01-".$month."-".$year;
 $start_time = strtotime($start_date);
 $end_time = strtotime("+1 month", $start_time);
 
-echo "<div class='container'>";
+echo "<div class='table-responsive'>";
 echo "<table class='table table-hover table-bordered table-striped'>";
 echo "<thead><tr>";
 echo "<th width='150'><b>Date</b></th>";
@@ -134,9 +134,9 @@ echo "</tr>";
 
 } // end for Loop 
 
-echo "</tbody></table>";
+echo "</tbody></table></div>";
 
 } 
-
+echo "</div>";
 
 ?>

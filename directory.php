@@ -100,7 +100,7 @@ echo "<option value='$deptname'>--&nbsp;&nbsp;$deptname</option>";
 </select>
 </div>
 </p>
-
+<div class="table-responsive">
 <table id="userlist" class="table table-striped table-bordered" cellspacing="0">
 
     <thead>
@@ -167,7 +167,7 @@ while(odbc_fetch_row($rs)){
      ?>
     </tbody>
 </table>
-
+</div>
 <?php
 echo "</main></div>";
 echo "<script src='assets/js/bootstrap.bundle.min.js'></script>";
