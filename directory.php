@@ -105,7 +105,8 @@ echo "<option value='$deptname'>--&nbsp;&nbsp;$deptname</option>";
 
     <thead>
         <tr>
-			<th>Name</th>
+			<th>First Name</th>
+			<th>Last Name</th>
 			<th>Department</th>
 			<th>Designation</th>
 			<th>IC No</th>
@@ -114,7 +115,8 @@ echo "<option value='$deptname'>--&nbsp;&nbsp;$deptname</option>";
     </thead>
 	    <tfoot>
         <tr>
-			<th>Name</th>
+			<th>First Name</th>
+			<th>Last Name</th>
 			<th>Department</th>
 			<th>Designation</th>
 			<th>IC No</th>
@@ -127,6 +129,7 @@ echo "<option value='$deptname'>--&nbsp;&nbsp;$deptname</option>";
 $accessQuery="SELECT 
   user.userid,
   user.Name,
+  user.lastname,
   user.User_Group,
   user.ic,
   user.designation,
@@ -145,12 +148,14 @@ if (!$rs) {
 while(odbc_fetch_row($rs)){
   $userid=odbc_result($rs,"userid");
   $name=odbc_result($rs,"Name");
+  $lastname=odbc_result($rs,"lastname");
   $userdeptid=odbc_result($rs,"User_Group");
   $icnumber=odbc_result($rs,"ic");
   $designation=odbc_result($rs,"designation");
   $deptname=odbc_result($rs,"gName");
         echo "<tr>";
 		echo "<td>$name </td>";	
+		echo "<td>$lastname </td>";	
 	    echo "<td><b>$deptname</b></td>";
 		echo "<td>$designation</td>";
 		echo "<td>$icnumber</td>";
