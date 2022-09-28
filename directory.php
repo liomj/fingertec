@@ -19,14 +19,14 @@ echo "<link href='navbar-top-fixed.css' rel='stylesheet'>";
 ?>
 <script type="text/javascript" language="javascript">
 $(document).ready(function() {
-    var groupColumn = 1;
+    var groupColumn = 2;
 
     var table = $('#userlist').DataTable({
         "columnDefs": [
             { "visible": false, "targets": groupColumn },
 			
         ],
-        "order": [[1, 'desc' ]],
+        "order": [[2, 'desc' ]],
 
         "displayLength": 25,
         "drawCallback": function ( settings ) {
