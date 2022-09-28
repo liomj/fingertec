@@ -170,6 +170,7 @@ while(odbc_fetch_row($rs)){
 
 <?php
 echo "</main></div>";
+echo "<script src='assets/js/bootstrap.bundle.min.js'></script>";
 echo "</body></html>"; 
 
 ?>
