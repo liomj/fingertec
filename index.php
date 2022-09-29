@@ -81,7 +81,7 @@ echo "<div class='alert alert-info'>";
 echo "<select name='myuser' id='myuser' onchange='showReport()' class='myuser form-control'>
       <option value=''>Select Name</option>";
 	  
-$userquery="SELECT user.userid,user.Name,user.User_Group,user.ic,user_group.id,user_group.gName,user_group.parentId FROM user AS user 
+$userquery="SELECT user.userid,user.Name,user.lastname,user.User_Group,user.ic,user_group.id,user_group.gName,user_group.parentId FROM user AS user 
 INNER JOIN user_group AS user_group 
 ON user.User_Group=user_group.id";
 	  
@@ -99,6 +99,7 @@ while (odbc_fetch_row($rs))
 {
   $userid=odbc_result($rs,"userid");
   $name=odbc_result($rs,"Name");
+  $lastname=odbc_result($rs,"lastname");
   $userdeptid=odbc_result($rs,"User_Group");
   $icnumber=odbc_result($rs,"ic");
   $deptname=odbc_result($rs,"gName");
@@ -119,7 +120,7 @@ while (odbc_fetch_row($rs))
         // echo the current <option>
  
 
-	  echo "<option value='".$icnumber."'>".$name."</option>";
+	  echo "<option value='".$icnumber."'>".$name." ".$lastname."</option>";
 	
 	} 
 
