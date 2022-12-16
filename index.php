@@ -21,7 +21,21 @@ echo "<link href='assets/css/navbar-top-fixed.css' rel='stylesheet'>";
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $(".myuser").select2();
+  $(".myuser").select2({
+    theme: "bootstrap"
+});
+});
+
+$(document).ready(function() {
+  $(".myyear").select2({
+    theme: "bootstrap"
+});
+});
+
+$(document).ready(function() {
+  $(".mymonth").select2({
+    theme: "bootstrap"
+});
 });
 </script>
 
@@ -136,7 +150,7 @@ echo "<div class='form-group'>
     <label for='myyear'>  Year :</label>";
 
     $current_year = date('Y')*1;
-    echo '<select id="myyear" name="myyear" onchange="showReport()" class="form-control">';
+    echo '<select id="myyear" name="myyear" onchange="showReport()" class="myyear form-control">';
     echo '<option value="">Select Year</option>';
     do {
         echo '<option value="'.$current_year.'">'.$current_year.'</option>';
@@ -148,13 +162,13 @@ echo "<div class='form-group'>
     ?>
 		<div class='form-group'>
     <label for='mymonth'>  Month :</label>
-  			<select name="mymonth" id="mymonth" onchange="showReport()" class="form-control">
+  			<select name="mymonth" id="mymonth" onchange="showReport()" class="mymonth form-control">
 <option value="">Select Month</option>
       <option value="01">January</option>
       <option value="02">February</option>
-      <option value="03">Mac</option>
+      <option value="03">March</option>
       <option value="04">April</option>
-      <option value="05">Mei</option>
+      <option value="05">May</option>
       <option value="06">June</option>
       <option value="07">July</option>
       <option value="08">August</option>
