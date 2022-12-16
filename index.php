@@ -7,16 +7,17 @@ include "config.php";
 echo "<html><head>";
 echo "<title>Staff Attendance Report</title>";
 echo "<meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>";
-echo "<link rel='stylesheet' href='assets/css/bootstrap.min.css' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' 
-crossorigin='anonymous'>";
+echo "<link rel='stylesheet' href='assets/css/bootstrap.min.css'>";
 echo "<script src='assets/js/jquery.min.js'></script>";
 echo "<link href='assets/css/select2-bootstrap.css' rel='stylesheet' />";
 echo "<link href='assets/css/select2.min.css' rel='stylesheet' />";
 echo "<script src='assets/js/select2.min.js'></script>";
 echo "<link rel='stylesheet' type='text/css' href='assets/css/datatables.min.css'/>
 <script type='text/javascript' src='assets/js/datatables.min.js'></script>";
-echo "<link href='navbar-top-fixed.css' rel='stylesheet'>";
+echo "<link href='assets/css/navbar-top-fixed.css' rel='stylesheet'>";
 ?>
+
+<style>.select2-container .select2-selection { height: 38px; overflow: auto; } </style>
 
 <script type="text/javascript">
 $(document).ready(function() {

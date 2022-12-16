@@ -1,8 +1,8 @@
 <?php
 
 //Configuration
-$starting_year = '2021'; // Starting Year in index.php dropdown
-$system_dsn ='remote'; // System DSN - Data Source Name MS Access Database
+$starting_year = '2022'; // Starting Year in index.php dropdown
+$system_dsn ='testing'; // System DSN - Data Source Name MS Access Database
 $access_dbuser=''; // MS Access Database User. Leave Blank if empty
 $access_dbpassword='ingress'; // MS Access Database Password
 
