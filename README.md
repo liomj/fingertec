@@ -4,7 +4,7 @@ Instruction
 a. Setup your ODBC Data Source Connection For MS Access Database (ingress.mdb)
 - Add System DSN - Microsoft Access Driver
 - Enter Data Source Name
-- Select Vigilance Database - ingress.mdb
+- Select Database - ingress.mdb
 
 b. Setup configuration in config.php file
 
